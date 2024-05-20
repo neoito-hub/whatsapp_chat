@@ -16,15 +16,20 @@ const handler = async (event) => {
 
     if (userInfo.error) {
       sendResponse(res, 400, { success: false, msg: userInfo.error })
-      return;
+      return
     }
 
-    const { page = 1, limit = 10, project_id } = reqBody
+    const { page = 1, limit = 10, project_id, search } = reqBody
 
     const skip = (page - 1) * limit
+    const searchValue = `%${search}%`
 
     const whereCondition = {
       projectId: project_id,
+      chatName: {
+        contains: searchValue,
+        mode: 'insensitive',
+      },
     }
 
     const chats = await prisma.chats.findMany({

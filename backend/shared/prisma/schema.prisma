@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("BB_WHATSAPP_CHATBOT_DATABASE_URL")
+  url      = env("BB_WHATSAPP_CHAT_DATABASE_URL")
 }
 
 model projects {

@@ -405,7 +405,7 @@ const handler = async (event) => {
         newChat = await prisma.chats.create({
           data: {
             candidateId: newUser ? newContact.id : candidateInfo[0].id,
-            chatName: getValidatedPhoneNumber.phone_number_with_country_code,
+            chatName: newContact?.name,
             status: 'open',
             chatUid: generatedChatUid,
             initiatedBy: userInfo?.id,
@@ -779,7 +779,7 @@ const handler = async (event) => {
             newChat = await prisma.chats.create({
               data: {
                 candidateId: candidateDetails[0].id,
-                chatName: getValidatedPhoneNumber.phone_number_with_country_code,
+                chatName: candidateDetails[0]?.contact_name,
                 status: 'open',
                 chatUid: generatedChatUid,
                 initiatedBy: userInfo?.id,

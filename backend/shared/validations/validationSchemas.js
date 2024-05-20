@@ -65,6 +65,7 @@ const sendMessageSchema = vine.object({
 const chatlistSchema = vine.object({
   page: vine.number(),
   limit: vine.number(),
+  search: vine.string(),
   project_id: vine.string(),
 })
 
