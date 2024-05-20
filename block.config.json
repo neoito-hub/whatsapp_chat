@@ -3,8 +3,8 @@
   "type": "containerized",
   "blockId": "oX43il7P13D_3HWNLFpk4",
   "source": {
-    "https": "",
-    "ssh": "",
+    "https": "https://github.com/neoito-hub/whatsapp_chat.git",
+    "ssh": "git@github.com:neoito-hub/whatsapp_chat.git",
     "branch": "block_whatsapp_chat"
   },
   "parentBlockIDs": [],
