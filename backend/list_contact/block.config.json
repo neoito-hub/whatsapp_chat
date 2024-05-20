@@ -1,0 +1,20 @@
+{
+  "blockId": "VzaHLjAQ2bofuGwodRmwN",
+  "name": "list_contact",
+  "type": "function",
+  "source": {
+    "https": null,
+    "ssh": null,
+    "branch": "block_list_contact"
+  },
+  "parentBlockIDs": [
+    "1e6RyGd9uBCNgvy1hfqyo"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}

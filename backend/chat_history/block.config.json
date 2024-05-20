@@ -1,0 +1,20 @@
+{
+  "blockId": "QerCDJ4b2btQh8QKsWBwo",
+  "name": "chat_history",
+  "type": "function",
+  "source": {
+    "https": null,
+    "ssh": null,
+    "branch": "block_chat_history"
+  },
+  "parentBlockIDs": [
+    "1e6RyGd9uBCNgvy1hfqyo"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}

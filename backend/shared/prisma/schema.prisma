@@ -1,0 +1,248 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("BB_WHATSAPP_CHATBOT_DATABASE_URL")
+}
+
+model projects {
+  id                    String      @id @unique
+  projectUuid           String       @default(uuid())
+  name                  String
+  webhookUrl            String
+  channelName           String
+  whatsappBusinessId    String
+  whatsappPhoneNumberId String
+  whatsappBusinessToken String
+  webhookVerifyToken    String
+  createdAt             DateTime?   @default(now())
+  updatedAt             DateTime?   @updatedAt
+  contacts              contacts[]
+  templates             templates[]
+  chats                 chats[]
+  broadcasts              broadcasts[]
+}
+
+model users {
+  userId                String                    @id @db.VarChar(255)
+  userName              String                    @db.VarChar(255)
+  fullName              String                    @db.VarChar(255)
+  email                 String                    @db.VarChar(255)
+  password              String                    @db.VarChar(255)
+  address1              String                    @db.VarChar(150)
+  address2              String                    @db.VarChar(150)
+  phone                 String                    @db.VarChar(20)
+  emailVerificationCode String                    @db.VarChar(255)
+  emailVerified         String                    @db.VarChar(255)
+  createdAt             DateTime?                 @default(now())
+  updatedAt             DateTime?                 @updatedAt
+  opt_counter           Int
+  id                    BigInt                    @unique
+  deletedAt             DateTime?
+}
+
+model contacts {
+  id                          String                        @id @default(uuid())
+  name                        String?
+  countryCode                 String
+  phoneNumber                 String                        @unique
+  email                       String?                       @unique
+  address                     String?                       @unique
+  status                      String?
+  projectId                   String?
+  project                     projects?                     @relation(fields: [projectId], references: [id])
+  createdAt                   DateTime?                     @default(now())
+  updatedAt                   DateTime?                     @updatedAt
+  candidate_custom_parameters candidate_custom_parameters[]
+}
+
+model templates {
+  id                      String                               @id @default(uuid())
+  name                    String
+  categoryId              String
+  categoryName            String
+  category                template_categories                  @relation(fields: [categoryId], references: [id])
+  languageId              String
+  language                template_languages                    @relation(fields: [languageId], references: [id])
+  languageName            String
+  templateType            String
+  templateBody            Json
+  templateHeader          Json
+  templateFooter          Json
+  templateUuid            String?
+  status                  String
+  buttonsType             String
+  header_url              String?
+  type                    String
+  createdAt               DateTime?                            @default(now())
+  updatedAt               DateTime?                            @updatedAt
+  projectId               String
+  project                 projects                             @relation(fields: [projectId], references: [id])
+  templateMessageButtons  template_message_buttons[]
+  templateMessageParams   template_message_custom_parameters[]
+  chat_templates          chat_template[]
+  broadcasts              broadcasts[]
+}
+
+model template_message_buttons {
+  id                String    @id @default(uuid())
+  templateMessageId String
+  templateMessage   templates @relation(fields: [templateMessageId], references: [id])
+  buttonArray       Json
+  createdAt         DateTime? @default(now())
+  updatedAt         DateTime? @updatedAt
+}
+
+model template_message_custom_parameters {
+  id                String    @id @default(uuid())
+  templateMessageId String
+  templateMessage   templates @relation(fields: [templateMessageId], references: [id])
+  paramName         String
+  paramValue        String?
+  paramOrder        Int
+  paramType         String
+  createdAt         DateTime? @default(now())
+  updatedAt         DateTime? @updatedAt
+}
+
+model template_languages {
+  id        String      @id @default(uuid()) @unique
+  name      String
+  code      String
+  createdAt DateTime?   @default(now())
+  updatedAt DateTime?   @updatedAt
+  templates templates[]
+}
+
+model template_categories {
+  id        String      @id @default(uuid()) @unique
+  name      String
+  createdAt DateTime?   @default(now())
+  updatedAt DateTime?   @updatedAt
+  templates templates[]
+}
+
+model api_vendor {
+  id               Int       @id @default(autoincrement())
+  vendorType       String
+  vendorName       String
+  vendorBaseUrl    String
+  vendorApiVersion String
+  status           String
+  createdAt        DateTime? @default(now())
+  updatedAt        DateTime? @updatedAt
+}
+
+model candidate_custom_parameters {
+  id        Int       @id @default(autoincrement())
+  contactId String
+  contacts  contacts  @relation(fields: [contactId], references: [id])
+  name      String?
+  value     String?
+  status    String?
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model chats {
+  id                       BigInt                    @id @default(autoincrement()) @unique
+  candidateId              String                    @unique
+  chatName                 String?
+  status                   String?
+  chatUid                  String?
+  initiatedBy              String?
+  waConversationId         String?
+  isCandidateReplied       Boolean
+  latestMessage            String?
+  latestMessageCreatedTime String?
+  receiverId                String?
+  lastMessageType          String?
+  lastSendTemplateId       String?
+  whatsAppAvailability     String?
+  projectId                String
+  projects                 projects                  @relation(fields: [projectId], references: [id])
+  createdAt                DateTime?                 @default(now())
+  updatedAt               DateTime?                 @updatedAt
+  chat_templates           chat_template[]
+  individual_chat_details  individual_chat_details[]
+}
+
+model chat_template {
+  id         BigInt    @id @default(autoincrement())
+  templateId String
+  templates  templates @relation(fields: [templateId], references: [id])
+  chatId     BigInt
+  chats      chats     @relation(fields: [chatId], references: [id])
+  isReplied  Boolean?
+  createdAt  DateTime? @default(now())
+  updatedAt  DateTime? @updatedAt
+}
+
+model individual_chat_details {
+  id                  BigInt    @id @default(autoincrement()) @unique
+  chatId              BigInt
+  whatsappMessageId   String?
+  conversationId      String?
+  owner               Boolean
+  messageText         String
+  isMessageRead       Boolean
+  messageType         String?
+  senderName          String?
+  waId                String?
+  timeStamp           String?
+  messageStatusString String?
+  chatUid             String
+  eventType           String?
+  senderId            String
+  receiverId          String
+  status              String?
+  fileName            String?
+  fileType            String?
+  fileLocationUrl     String?
+  localFileLocation   String?
+  templateMessageId   String?
+  mediaId             String?
+  createdAt           DateTime? @default(now())
+  updatedAt           DateTime? @updatedAt
+  chats               chats     @relation(fields: [chatId], references: [id])
+}
+
+model broadcasts {
+  id                               BigInt    @id @default(autoincrement())
+  templateMessageId                String
+  templates                        templates @relation(fields: [templateMessageId], references: [id])
+  name                             String?
+  broadcastTime                    String?
+  successCount                     Int?
+  failedCount                      Int?
+  totalNumberOfReceipients         Int?
+  createdAt                        DateTime? @default(now())
+  updatedAt                        DateTime? @updatedAt
+  status                           String?
+  createdBy                        String?
+  broadcast_template_params        Json[]
+  project_id                       String
+  projects                         projects      @relation(fields: [project_id], references: [id])
+  header_params                    Json?
+  body_params                      Json?
+  footer_params                    Json?
+  total_remaining_recipients_count Int?
+  broadcastsRecipients             broadcast_recipients[]
+}
+
+model broadcast_recipients {
+id                               BigInt    @id @default(autoincrement())
+broadcastId                      BigInt
+broadcasts                       broadcasts      @relation(fields: [broadcastId], references: [id])
+userId                           String
+recievedStatus                   String?
+broadcast_template_params        Json[] 
+broadcast_message_uid            String
+error_message_received           String?
+error_message_details            String?
+}

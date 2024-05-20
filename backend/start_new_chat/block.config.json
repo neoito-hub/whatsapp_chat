@@ -1,0 +1,20 @@
+{
+  "blockId": "jnYMGdiHFx9fgwCGxf08-",
+  "name": "start_new_chat",
+  "type": "function",
+  "source": {
+    "https": null,
+    "ssh": null,
+    "branch": "block_start_new_chat"
+  },
+  "parentBlockIDs": [
+    "1e6RyGd9uBCNgvy1hfqyo"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}

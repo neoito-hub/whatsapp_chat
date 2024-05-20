@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+body {
+    background-color: #F6F8FA;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .border-primary {
+    border-color: #E1E4E8;
+  }
+  
+  .border-green {
+    border-color: #28A745;
+  }
+  
+  .text-gray-dark {
+    color: #24292E;
+  }
+  
+  .text-gray-light {
+    color: #6A737D;
+  }
+  
+  .bg-gray-dark {
+    background-color: #24292E;
+  }
+  
+  .bg-primary {
+    background-color: #6F42C1;
+  }
+  
+  .bg-primary.bg-primary-hover:hover {
+    background-color: #4C2888;
+  }
+  
+  .bg-green {
+    background-color: #28A745;
+  }
+  
+  .text-green {
+    color: #28A745;
+  }
+  
+  .text-purple {
+    color: #6F42C1;
+  }
+  
+  .error-msg-bg {
+    background-color: #FFDCE0;
+  }
+  
+  .error-msg-border {
+    border-color: #D73A49;
+  }
+  
+  .has-error {
+    border-color: #D73A49;
+  }
+  
+  input:focus {
+    border: 1px solid #6F42C1;
+    -webkit-box-shadow: 0px 0px 0px 3px #E6DCFD;
+            box-shadow: 0px 0px 0px 3px #E6DCFD;
+  }
+
+@media (min-width: 640px) {
+    .max-w-344 {
+      max-width: 344px;
+    }
+    .max-w-382 {
+      max-width: 382px;
+    }
+  }
+  
+  input:-webkit-autofill {
+    -webkit-background-clip: text;
+  }
+  
+  @media (min-width: 640px) {
+    .authentication-wrapper {
+      -webkit-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+              box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
+    }
+  }
+  
+  .authentication-wrapper .frm-container label {
+    margin-bottom: 6px;
+  }
+  
+  .authentication-wrapper .frm-container label.chk-permission {
+    margin-bottom: 15px;
+  }
+  
+  .authentication-wrapper .frm-container .visible-icon {
+    cursor: pointer;
+    background: url(../../assets/img/icons/eye-icon.svg) no-repeat center center;
+    opacity: 0.6;
+  }
+  
+  .authentication-wrapper .frm-container .visible-icon.active-icon {
+    background: url(../../assets/img/icons/eye-icon-active.svg) no-repeat center center;
+    opacity: 1;
+  }
+  
+  .authentication-wrapper .frm-container .checkbox-label {
+    margin-bottom: 0px;
+  }
+  
+  .authentication-wrapper .frm-container .checkbox-label span {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+  }
+  
+  .authentication-wrapper .frm-container .checkbox-label input:checked + span {
+    background: url(../../assets/img/icons/tick.svg) no-repeat center center #3B99FC;
+    background-size: 8px;
+    border-color: #2C90FC;
+  }
+  
+  .authentication-wrapper .frm-container .chk-permission input:checked + span {
+    background: url(../../assets/img/icons/tick-xl.svg) no-repeat center center #28A745;
+  }
+  
+  @media (max-width: 339px) {
+    .authentication-wrapper .accept-text-xs {
+      font-size: 12px;
+    }
+  }
+  
+  .center-line {
+    border-top: 1px dashed #D1D5DA;
+  }
+  
+  .center-line > img {
+    margin-top: -11px;
+  }
+  
+  .authorize-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .authorize-scroll::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 24px;
+  }
+  
+  .authorize-scroll::-webkit-scrollbar-thumb {
+    background: #E1E4E8;
+    border-radius: 24px;
+  }
+  
+  .authorize-scroll::-webkit-scrollbar-thumb:hover {
+    background: #E1E4E8;
+  }

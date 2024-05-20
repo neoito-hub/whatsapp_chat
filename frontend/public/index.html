@@ -1,0 +1,93 @@
+<html>
+  <head>
+    <title>Spaces</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+      user-scalable="no"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            screens: {
+              md: '769px',
+              'md-lt': {
+                max: '768px',
+              },
+              'lg-lt': {
+                max: '1023px',
+              },
+              xxs: {
+                max: '420px',
+              },
+              '3xl': {
+                min: '1820px',
+              },
+            },
+            fontSize: {
+              'ab-sm': ['13px', 'normal'],
+              'ab-base': ['15px', 'normal'],
+              'ab-3xl': ['28px', 'normal'],
+            },
+            colors: {
+              primary: '#5E5EDD',
+              secondary: '#D453B6',
+              warning: '#FFF0F0',
+              'ab-disabled': '#C2C2C2',
+              'primary-light': '#F2EBFF',
+              ab: {
+                red: '#EB0000',
+                green: '#01944C',
+                black: '#484848',
+                yellow: '#FFE01B',
+                orange: '#FFA500',
+                'disabled-yellow': '#FCF5CD',
+                gray: {
+                  light: '#F8F8F8',
+                  dark: '#DDDDDD',
+                  medium: '#E0E0E0',
+                  bold: '#6A737D',
+                },
+              },
+            },
+            boxShadow: {
+              box: '0px 8px 8px rgba(0, 0, 0, 0.024)',
+              'box-md': '0px 0px 8px rgba(0, 0, 0, 0.12)',
+            },
+          },
+        },
+      }
+    </script>
+    <style type="text/tailwindcss">
+      @layer components {
+        .btn-secondary {
+          @apply bg-secondary text-white px-5 py-1.5 rounded font-bold text-center cursor-pointer transition-all hover:bg-opacity-80;
+        }
+        .btn-primary {
+          @apply bg-primary text-white px-5 py-1.5 rounded font-bold text-center cursor-pointer transition-all hover:bg-opacity-80;
+        }
+        .btn-default {
+          @apply text-white px-5 py-1.5 rounded font-bold text-center cursor-pointer transition-opacity hover:bg-opacity-80;
+        }
+        .nav-menu-wrapper {
+          @apply w-64 md-lt:fixed md-lt:h-[calc(100vh-64px)] md-lt:overflow-y-auto md-lt:overflow-x-hidden md-lt:px-3 md-lt:border-l md-lt:border-ab-gray-medium md-lt:basis-full top-16 md:flex items-center md:w-auto md-lt:dark:bg-[#110D17] md-lt:overflow-hidden md-lt:transition-all md-lt:!duration-500 md-lt:ease-linear;
+        }
+        .info-box {
+          @apply flex items-center bg-ab-gray-light flex-shrink-0 border border-ab-gray-dark rounded-full !leading-tight;
+        }
+        .ab-tooltip {
+          @apply font-semibold text-xs !rounded !bg-ab-black before:!content-none after:!content-none;
+        }
+        .radio-icon {
+          @apply border-ab-disabled float-left h-5 w-5 flex items-center justify-center flex-shrink-0 rounded-full border bg-white after:content-[''] after:rounded-full after:w-3 after:h-3 after:bg-transparent peer-checked:after:bg-primary;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

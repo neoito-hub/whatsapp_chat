@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Appblocks - Authorize</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link href="/assets/css/auth-output.css" rel="stylesheet" />
+    <script type="module" src="/js/services/authorize-appname.js"></script>
+    <script defer src="/js/index.js"></script>
+</head>
+<body>
+    <div class="w-full min-h-screen float-left flex sm:block">
+        <div class="w-full flex flex-col min-h-screen items-center sm:justify-center sm:p-2">
+            <div class="w-full max-w-382 sm:mx-auto bg-white sm:rounded-2xl min-h-full sm:min-h-0 py-8 px-6 authentication-wrapper">
+                <div class="error-msg-wrapper error-msg-border error-msg-bg w-full mb-5 border py-4 items-center rounded-md flex justify-between px-3">
+                    <div class="flex">
+                        <img class="mr-2" src="/assets/img/icons/icon-error.svg" width="13px" height="13px" alt=""/>
+                        <div id="error-msg" class="text-xs text-gray-dark tracking-tighter">{{ .ErrorMessage }}</div>
+                    </div>
+                    <div onClick="handleClosebtn()" class="flex-shrink-0 cursor-pointer"><img src="/assets/img/icons/close-icon.svg" width="8px" height="8px" alt=""></img></div>
+                </div>
+
+                <div class="w-full flex flex-col items-center">
+                    <div class="flex justify-center items-center max-w-180 w-full">
+                        <img src="/assets/img/logo.svg" alt="" width="46px" height="58px"/>
+                        <div class="flex-grow px-3"><div class="center-line relative"><img src="/assets/img/icons/authorize-tick-round.svg" width="20px" height="20px" class="absolute w-5 h-5 left-1/2 transform-gpu -translate-x-1/2" alt=""/></div></div>
+                        <img src="/assets/img/icons/authorise-icon.svg" alt="" width="36px" height="36px"/>
+                    </div>
+                    <div class="text-xl font-semibold mt-3">Authorize AppName</div>
+                    <p class="w-full text-xs text-center text-gray-light pt-0.5 float-left">AppName requires access to the following to run.</p>
+                </div>
+                <div class="w-full float-left py-7 px-2 rounded-2xl border-primary border mt-5">
+
+                        <form class="frm-container w-full float-left mb-0" id="authPermission">
+                            <div class="authorize-scroll w-full float-left overflow-y-auto px-4">
+                                <div class="w-full float-left mb-2" id="permissionList">
+                                </div>
+                                <div class="w-full float-left pt-3 pb-2 border-t border-primary">
+                                    <div class="text-sm text-gray-light font-semibold mb-3">Optional Permissions</div>
+                                    <div id="optionalPermissionList">
+                                    </div>
+                            </div>
+                            </div>
+                            <div class="flex flex-col button-wrapper w-full px-4">
+                                <button onClick="allowAuthorization()" type="button" class="rounded-md text-white h-8 mt-2 font-semibold text-sm transition-all bg-primary bg-primary-hover">Allow</button>
+                                <a href="" class="w-full text-center text-sm text-purple mt-3 cursor-pointer hover:underline">Cancel</a>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
