@@ -19,26 +19,34 @@ const handler = async (event) => {
       return
     }
 
-    const { page = 1, limit = 10, project_id, search } = reqBody
-
+    const { page = 1, limit = 10, search = '', project_id } = reqBody
     const skip = (page - 1) * limit
-    const searchValue = `%${search}%`
+    let searchValue = `%${search}%`
 
-    const whereCondition = {
-      projectId: project_id,
-      chatName: {
-        contains: searchValue,
-        mode: 'insensitive',
-      },
+    const chatsCount = await prisma.$queryRaw`SELECT COUNT(*) as total FROM (
+      SELECT 
+      * 
+      FROM chats as c
+      WHERE c."projectId" =${project_id}
+      AND c."chatName" ILIKE ${searchValue}
+  ) as subquery;
+  `
+
+    const chatsInfo = await prisma.$queryRaw`
+      SELECT 
+      *
+      FROM chats as c
+      WHERE c."projectId" =${project_id}
+      AND c."chatName" ILIKE ${searchValue}
+      LIMIT ${limit} 
+      OFFSET ${skip};`
+
+    let result = {
+      chats: chatsInfo,
+      count: chatsCount[0].total,
     }
 
-    const chats = await prisma.chats.findMany({
-      where: whereCondition,
-      skip,
-      take: limit,
-    })
-
-    sendResponse(res, 200, { success: true, msg: `chats retrived successfully`, data: chats })
+    sendResponse(res, 200, { success: true, msg: `chats retrived successfully`, data: result })
   } catch (error) {
     console.error('Error retriving chats:', error)
   }

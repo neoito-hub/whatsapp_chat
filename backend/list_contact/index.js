@@ -25,7 +25,7 @@ const handler = async (event) => {
 
     const contactsCount = await prisma.$queryRaw`SELECT COUNT(*) as total FROM (
       SELECT 
-       c.name  
+      * 
       FROM contacts as c
       WHERE c."projectId" =${project_id}
       AND c.name ILIKE ${searchValue}
@@ -42,7 +42,7 @@ const handler = async (event) => {
       OFFSET ${skip};`
 
     let result = {
-      data: contactsInfo,
+      contacts: contactsInfo,
       count: contactsCount[0].total,
     }
 

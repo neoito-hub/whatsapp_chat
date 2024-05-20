@@ -98,8 +98,8 @@ const handler = async (event) => {
     OFFSET ${skip};`
 
     let result = {
-      data: broadcasts,
-      count: broadcastsCount,
+      broadcasts: broadcasts,
+      count: broadcastsCount[0].total,
     }
 
     sendResponse(res, 200, { success: true, msg: `Broadcasts retrived successfully`, data: result })

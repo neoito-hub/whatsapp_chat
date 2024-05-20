@@ -124,7 +124,7 @@ GROUP BY
     OFFSET ${skip};`
 
     let result = {
-      data: templatesInfo,
+      templates: templatesInfo,
       count: templatesCount[0].total,
     }
 

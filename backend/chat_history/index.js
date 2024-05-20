@@ -15,23 +15,35 @@ const handler = async (event) => {
     const userInfo = await authenticateUser(req)
 
     if (userInfo.error) {
-      sendResponse(res, 400, { success: false, msg: userInfo.error });
-      return;
+      sendResponse(res, 400, { success: false, msg: userInfo.error })
+      return
     }
 
     const { page = 1, limit = 10, chat_id } = reqBody
-
     const offset = (page - 1) * limit
 
+    const chatHistoryCount = await prisma.$queryRaw`SELECT COUNT(*) as total FROM (
+      SELECT 
+      *
+      FROM individual_chat_details  as icd
+      WHERE icd."chatId" =${BigInt(chat_id)} 
+  ) as subquery;
+  `
+
     const chatHistory = await prisma.$queryRaw`
-    select * from individual_chat_details 
-    where "chatId" =${BigInt(chat_id)} 
-    order by "createdAt" desc
+    select * from individual_chat_details as icd
+    WHERE icd."chatId" =${BigInt(chat_id)} 
+    order by icd."createdAt" desc
     limit ${limit}
     offset ${offset}
     `
 
-    sendResponse(res, 200, { success: true, msg: `chat history retrived successfully`, data: chatHistory })
+    let result = {
+      chat_history: chatHistory,
+      count: chatHistoryCount[0].total,
+    }
+
+    sendResponse(res, 200, { success: true, msg: `chat history retrived successfully`, data: result })
   } catch (error) {
     console.error('Error retriving chat history:', error)
   }
