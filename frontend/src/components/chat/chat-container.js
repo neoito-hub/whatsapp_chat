@@ -45,10 +45,10 @@ const ChatContainer = ({ removeSelection, selectedChat }) => {
     })
     res &&
       setHistory(
-        res?.map((item) => ({
+        res?.chat_history?.map((item) => ({
           role: item?.owner ? 'owner' : 'user',
           content: item?.messageText,
-        }))
+        })),
       )
   }
 

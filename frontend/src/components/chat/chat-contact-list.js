@@ -18,6 +18,7 @@ const ChatContactList = ({
   showNewChatModal,
   chats,
   updateChatList,
+  flag1,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   // const [chats, setChats] = useState(null)
@@ -42,10 +43,10 @@ const ChatContactList = ({
       subUrl: listChatUrl,
       value: filterDataStructure(),
     })
-    res && updateChatList(res || [])
+    res && updateChatList(res?.chats || [])
     res && setTotalCount(res?.count || 0)
     setLoading(false)
-  }, [flag, searchText])
+  }, [flag, searchText, flag1])
 
   const onAddContactSubmit = async (data) => {
     const res = await apiHelper({
@@ -64,7 +65,7 @@ const ChatContactList = ({
       setTotalCount(0)
       setSearchText(text)
     }, 1000),
-    []
+    [],
   )
 
   const onSearchTextChange = (e) => {
@@ -116,6 +117,13 @@ const ChatContactList = ({
                 </li>
               ))}
           </ul>
+          {!loading && !chats?.length && (
+            <div className="flex justify-center items-center">
+              <span className="text-ab-black float-left w-full py-10 text-center text-sm">
+                No Chats Found
+              </span>
+            </div>
+          )}
         </div>
         <div className="flex items-center justify-center pb-12">
           <button

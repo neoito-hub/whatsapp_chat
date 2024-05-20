@@ -52,11 +52,11 @@ const CreateNewChatModal = ({
         })
         if (isMounted && res) {
           setTemplates(
-            res?.data?.map((item) => ({
+            res?.templates?.map((item) => ({
               id: item?.id,
               value: item?.name,
               label: item?.name,
-            }))
+            })),
           )
         }
       } catch (error) {
@@ -73,13 +73,13 @@ const CreateNewChatModal = ({
         })
         if (isMounted && res) {
           setContacts(
-            res?.data?.map((item) => ({
+            res?.contacts?.map((item) => ({
               id: item?.id,
               countryCode: item?.countryCode,
               phoneNumber: item?.phoneNumber,
               value: item?.name,
               label: item?.name,
-            }))
+            })),
           )
         }
       } catch (error) {

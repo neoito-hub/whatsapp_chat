@@ -37,7 +37,7 @@ const Broadcast = () => {
       subUrl: listBroadcastUrl,
       value: filterDataStructure(),
     })
-    res && setBroadcasts(res?.data)
+    res && setBroadcasts(res?.broadcasts)
     res && setTotalCount(res.count[0].total || 0)
     setLoader(false)
   }, [flag])
@@ -55,7 +55,7 @@ const Broadcast = () => {
       setSelectedPage(1)
       setFlag((flg) => !flg)
     }, 1000),
-    []
+    [],
   )
 
   const onSearchTextChange = (e) => {
@@ -124,7 +124,7 @@ const Broadcast = () => {
                             {calculateSerialNumber(
                               selectedPage,
                               index,
-                              page_limit
+                              page_limit,
                             )}
                           </td>
                           <td className="p-3">
@@ -141,7 +141,7 @@ const Broadcast = () => {
                           </td>
                           <td className="whitespace-nowrap p-3">
                             {dayjs(broadcast?.broadcastTime).format(
-                              'DD MMM YYYY, h:mm A'
+                              'DD MMM YYYY, h:mm A',
                             )}
                           </td>
                           <td className="whitespace-nowrap p-3">
@@ -154,7 +154,7 @@ const Broadcast = () => {
                 {!loader && !broadcasts?.length && (
                   <div className="flex justify-center items-center">
                     <span className="text-ab-black float-left w-full py-10 text-center text-sm">
-                      No template Found
+                      No Broadcasts Found
                     </span>
                   </div>
                 )}

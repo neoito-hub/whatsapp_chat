@@ -24,7 +24,7 @@ const MultiSelectContacts = ({ onContactChange }) => {
       subUrl: listContactUrl,
       value: filterDataStructure(),
     })
-    res && setContacts(res?.data)
+    res && setContacts(res?.contacts)
   }, [])
 
   const handleChange = (selectedOptions) => {
@@ -39,7 +39,7 @@ const MultiSelectContacts = ({ onContactChange }) => {
         : contacts?.map((contact) => ({
             value: contact.id,
             label: contact.name,
-          }))
+          })),
     )
     onContactChange(contacts?.map((contact) => contact.id))
   }

@@ -40,7 +40,7 @@ const Template = () => {
       subUrl: listTemplateUrl,
       value: filterDataStructure(),
     })
-    res && setTemplates(res?.data)
+    res && setTemplates(res?.templates)
     res && setTotalCount(res.count || 0)
     setLoader(false)
   }, [flag])
@@ -58,7 +58,7 @@ const Template = () => {
       setSelectedPage(1)
       setFlag((flg) => !flg)
     }, 1000),
-    []
+    [],
   )
 
   const onSearchTextChange = (e) => {
@@ -129,7 +129,7 @@ const Template = () => {
                             {calculateSerialNumber(
                               selectedPage,
                               index,
-                              page_limit
+                              page_limit,
                             )}
                           </td>
                           <td className="p-3">
@@ -152,7 +152,7 @@ const Template = () => {
                           </td>
                           <td className="whitespace-nowrap p-3">
                             {dayjs(template.createdAt).format(
-                              'DD MMM YYYY, h:mm A'
+                              'DD MMM YYYY, h:mm A',
                             )}
                           </td>
                           <td className="whitespace-nowrap p-3">

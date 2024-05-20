@@ -51,7 +51,7 @@ const CreateNewTemplateModal = ({ isOpen, onClose }) => {
           id: item?.id,
           value: item?.name,
           label: item?.name,
-        }))
+        })),
       )
   }, [])
 
@@ -66,13 +66,13 @@ const CreateNewTemplateModal = ({ isOpen, onClose }) => {
           id: item?.id,
           value: item?.code,
           label: item?.name,
-        }))
+        })),
       )
   }, [])
 
   const isTextEmpty = (type) => {
     const bodyComponents = formData.components.filter(
-      (component) => component.type === type
+      (component) => component.type === type,
     )
     for (const component of bodyComponents) {
       if (component.text.trim() === '') {
@@ -152,12 +152,16 @@ const CreateNewTemplateModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = async () => {
     if (validateForm()) {
-      const res = await apiHelper({
-        baseUrl: process.env.BLOCK_ENV_URL_API_BASE_URL,
-        subUrl: createTemplateUrl,
-        value: formData,
-      })
-      res && onClose()
+      try {
+        await apiHelper({
+          baseUrl: process.env.BLOCK_ENV_URL_API_BASE_URL,
+          subUrl: createTemplateUrl,
+          value: formData,
+        })
+        onClose()
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 

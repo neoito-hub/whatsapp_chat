@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ChatContactList from './chat-contact-list'
 import ChatContainer from './chat-container'
-// import apiHelper from '../common/apiHelper'
 import CreateNewChatModal from './create-new-chat-modal'
 
 const Chat = () => {
@@ -9,6 +8,7 @@ const Chat = () => {
   const [showChat, setShowChat] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [chats, setChats] = useState(null)
+  const [flag, setFlag] = useState(false)
 
   const handleContactChange = (contact) => {
     setShowChat(true)
@@ -18,6 +18,7 @@ const Chat = () => {
   const onAddNewChatSuccess = () => {
     setSelectedChat(null)
     setShowChat(null)
+    setFlag((flg) => !flg)
   }
 
   return (
@@ -28,6 +29,7 @@ const Chat = () => {
         showNewChatModal={() => setIsModalOpen(true)}
         chats={chats}
         updateChatList={(list) => setChats(list)}
+        flag1={flag}
       />
       {showChat && (
         <ChatContainer
@@ -42,10 +44,6 @@ const Chat = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSuccess={onAddNewChatSuccess}
-        // selectedContact={selectedChat}
-        // onSuccess={() => setShowChat(true)}
-        // onSuccess={() => null}
-        // onSave={onAddContactSubmit}
       />
     </div>
   )

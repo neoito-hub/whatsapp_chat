@@ -37,11 +37,11 @@ const CreateNewBroadcastModal = ({ isOpen, onClose }) => {
     })
     res &&
       setTemplates(
-        res?.data?.map((item) => ({
+        res?.templates?.map((item) => ({
           id: item?.id,
           value: item?.name,
           label: item?.name,
-        }))
+        })),
       )
   }, [])
 
