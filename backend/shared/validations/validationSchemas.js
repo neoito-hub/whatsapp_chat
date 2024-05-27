@@ -53,13 +53,13 @@ const newBroadcast = vine.object({
   templateId: vine.string(),
   recipients: vine.array(vine.string()),
   template_params: vine.array(vine.object({})),
-  project_id : vine.string()
+  project_id: vine.string(),
 })
 
 const sendMessageSchema = vine.object({
   contact_id: vine.string(),
   message: vine.string(),
-  project_id : vine.string()
+  project_id: vine.string(),
 })
 
 const chatlistSchema = vine.object({
@@ -75,6 +75,25 @@ const chatHistorySchema = vine.object({
   chat_id: vine.string(),
 })
 
+const getTemplateDetails = vine.object({
+  project_id: vine.string(),
+  template_id: vine.string(),
+})
+
+const editTemplateSchema= vine.object({
+  project_id: vine.string(),
+  template_id: vine.string(),
+  name: vine.string(),
+  type: vine.string(),
+  categoryId: vine.string(),
+  buttonType: vine.string().optional(),
+  projectId: vine.string(),
+  category: vine.string(),
+  language: vine.string(),
+  languageId: vine.string(),
+  components: vine.array(vine.object({})),
+})
+
 export default {
   addContactSchema,
   paginationAndSearchSchema,
@@ -85,5 +104,7 @@ export default {
   newBroadcast,
   sendMessageSchema,
   chatlistSchema,
-  chatHistorySchema
+  chatHistorySchema,
+  getTemplateDetails,
+  editTemplateSchema
 }

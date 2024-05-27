@@ -64,6 +64,12 @@
     },
     "list_broadcast": {
       "directory": "list_broadcast"
+    },
+    "get_template_details_by_id": {
+      "directory": "get_template_details_by_id"
+    },
+    "edit_template": {
+      "directory": "edit_template"
     }
   }
 }

@@ -1,0 +1,20 @@
+{
+  "blockId": "N4y7h5mRDeA_B_M9JqUBJ",
+  "name": "edit_template",
+  "type": "function",
+  "source": {
+    "https": null,
+    "ssh": null,
+    "branch": "block_edit_template"
+  },
+  "parentBlockIDs": [
+    "1e6RyGd9uBCNgvy1hfqyo"
+  ],
+  "repoType": "mono",
+  "language": "nodejs",
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "isPublic": true,
+  "start": "node index.js"
+}
