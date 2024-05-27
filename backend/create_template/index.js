@@ -70,7 +70,7 @@ const handler = async (event) => {
           data: {
             id: nanoid(),
             status: 'pending',
-            name: reqBody?.name,
+            name: reqBody?.name.toLowerCase(),
             categoryName: reqBody?.category,
             languageName: reqBody?.language,
             templateType: reqBody?.type,
@@ -78,10 +78,10 @@ const handler = async (event) => {
             templateBody: bodyObject,
             templateFooter: footerObject,
             type: 'template',
-            buttonsType: reqBody.buttonType ? reqBody.buttonType : "",
-            category: { connect: { id:  reqBody?.categoryId} },
+            buttonsType: reqBody.buttonType ? reqBody.buttonType : '',
+            category: { connect: { id: reqBody?.categoryId } },
             language: { connect: { id: reqBody?.languageId } },
-            project: { connect: { id: reqBody?.projectId} },
+            project: { connect: { id: reqBody?.projectId } },
           },
         })
 
@@ -316,6 +316,8 @@ const handler = async (event) => {
         delete reqBody.projectId
         reqBody.allow_category_change = true
 
+        let reqData = { ...reqBody, name: reqBody.name.toLowerCase() }
+
         const projectDetails = await tx.projects.findFirst({
           where: {
             id: reqBody?.projectId,
@@ -336,7 +338,7 @@ const handler = async (event) => {
         let templateCreationResponse = null
 
         templateCreationResponse = await axios
-          .post(`${baseURL}${vendorDetails.vendorApiVersion}/${businessId}/message_templates`, reqBody, auth_config)
+          .post(`${baseURL}${vendorDetails.vendorApiVersion}/${businessId}/message_templates`, reqData, auth_config)
           .then((result) => {
             return result
           })
@@ -353,6 +355,7 @@ const handler = async (event) => {
         return {
           id: newClientTemplateMessage?.id ?? null,
           template_uid: templateCreationResponse?.data?.id ?? null,
+          template_status: templateCreationResponse?.data?.status ?? null,
           header_url: headerUrl,
           error: templateCreationError,
           error_message: errorMessage,
@@ -370,6 +373,7 @@ const handler = async (event) => {
         data: {
           templateUuid: result.template_uid,
           header_url: result.header_url,
+          status: result?.template_status,
         },
       })
 
