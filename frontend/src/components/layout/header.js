@@ -19,7 +19,7 @@ const Header = () => {
 
   const getUserDetailsApiUrl = 'get-user-details'
 
-  useEffect(() => {
+  useEffect(async () => {
     ;(async () => {
       const res = await apiHelper({
         baseUrl: process.env.SHIELD_AUTH_URL,
