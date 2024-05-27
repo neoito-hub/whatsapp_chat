@@ -51,8 +51,8 @@ model contacts {
   name                        String?
   countryCode                 String
   phoneNumber                 String                        @unique
-  email                       String?                       @unique
-  address                     String?                       @unique
+  email                       String?                       
+  address                     String?                   
   status                      String?
   projectId                   String?
   project                     projects?                     @relation(fields: [projectId], references: [id])

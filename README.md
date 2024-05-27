@@ -1,14 +1,14 @@
-# WhatsApp Chatbot
+# WhatsApp Chat
 
 ## Overview
 
-WhatsApp Chatbot is a versatile tool that enables seamless communication with users via WhatsApp. With this chatbot, you can send messages, craft templates, engage in one-on-one conversations, and broadcast messages efficiently.
+WhatsApp Chat is a versatile tool that enables seamless communication with users via WhatsApp. With this chat, you can send messages, craft templates, engage in one-on-one conversations, and broadcast messages efficiently.
 
 ## Components
 
 1. **Backend**: The backend component contains APIs responsible for integrating with WhatsApp, handling message processing, user interactions, and data management.
 
-2. **Authentication Shield**: Ensures secure access to the chatbot system by implementing robust authentication mechanisms to protect sensitive user data and system functionalities.
+2. **Authentication Shield**: Ensures secure access to the chat system by implementing robust authentication mechanisms to protect sensitive user data and system functionalities.
 
 ## Prerequisites
 
