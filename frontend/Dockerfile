@@ -1,8 +1,8 @@
 # Use the official Node.js runtime as the base image for building the app
 FROM node:20-alpine as build
 
-# Install Python, make, and g++
-RUN apk add --no-cache python3 make g++
+# Install Python, make, and g++, and other necessary build tools
+RUN apk add --no-cache python3 make g++ py3-setuptools
 
 # Set the working directory in the container
 WORKDIR /app

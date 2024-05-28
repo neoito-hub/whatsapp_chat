@@ -185,7 +185,7 @@ const CreateNewChatModal = ({
             <div className="sm:flex sm:items-start">
               <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full flex flex-col">
                 <h3 className="text-lg font-medium leading-6 text-gray-900 mb-4">
-                  Select a contact and template to send
+                  New Chat
                 </h3>
                 <div className="flex flex-col float-left mb-4 w-full mt-2">
                   <label className="text-ab-sm float-left mb-2 font-medium text-black">
@@ -208,7 +208,7 @@ const CreateNewChatModal = ({
                 </div>
                 <div className="flex flex-col float-left mb-4 w-full mt-2">
                   <label className="text-ab-sm float-left mb-2 font-medium text-black">
-                    Select Template Message
+                    Select Template
                   </label>
                   <Select
                     name="template_message_id"

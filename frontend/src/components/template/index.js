@@ -110,7 +110,7 @@ const Template = () => {
                     <tr className="text-ab-black bg-ab-gray-light text-left text-sm">
                       <th className="p-3 font-normal">Sl. No</th>
                       <th className="whitespace-nowrap p-3 font-normal">
-                        Name
+                        Template Name
                       </th>
                       <th className="p-3 font-normal">Language</th>
                       <th className="p-3 font-normal">Status</th>

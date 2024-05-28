@@ -48,6 +48,7 @@ const ChatContainer = ({ removeSelection, selectedChat }) => {
         res?.chat_history?.map((item) => ({
           role: item?.owner ? 'owner' : 'user',
           content: item?.messageText,
+          created_at: item?.createdAt,
         })),
       )
   }
@@ -96,10 +97,10 @@ const ChatContainer = ({ removeSelection, selectedChat }) => {
           onClick={removeSelection}
         />
       </div>
-      <div className="flex-1 p-4">
+      <div className="flex-1 p-4 overflow-hidden">
         <div className="flex flex-col h-full">
           <div
-            className="custom-scroll-bar overflow-y-auto flex flex-col gap-5 py-4 px-7 h-full"
+            className="custom-scroll-bar overflow-y-auto flex flex-col gap-5 py-4 px-7 h-full flex-grow"
             ref={mainScrollArea}
           >
             {history
@@ -112,7 +113,7 @@ const ChatContainer = ({ removeSelection, selectedChat }) => {
                     return (
                       <ChatBubble
                         key={idx}
-                        message={msg.content}
+                        message={msg}
                         isUser={false}
                         chatRef={isLastMessage ? lastMessageRef : null}
                       />
@@ -121,7 +122,7 @@ const ChatContainer = ({ removeSelection, selectedChat }) => {
                     return (
                       <ChatBubble
                         key={idx}
-                        message={msg.content}
+                        message={msg}
                         isUser
                         chatRef={isLastMessage ? lastMessageRef : null}
                       />
@@ -168,10 +169,10 @@ const ChatContainer = ({ removeSelection, selectedChat }) => {
             />
           </div>
           <button
-            onClick={(e) => {
-              e.preventDefault()
-              // handleClick()
-            }}
+            // onClick={(e) => {
+            //   e.preventDefault()
+            //   handleClick()
+            // }}
             className="absolute right-2.5 top-1/2 transform -translate-y-1/2 cursor-pointer hover:bg-primary/5 focus:bg-primary/10 p-2 rounded-full"
             type="submit"
             aria-label="Send"

@@ -2,13 +2,13 @@
 /* eslint-disable react/prop-types */
 // ChatBubble.js
 import React from 'react'
+import * as dayjs from 'dayjs'
 
-const ChatBubble = ({ message, isUser, chatRef, links = [] }) => {
-  const formattedContent = message.split('\n').map((line, index) => (
+const ChatBubble = ({ message, isUser, chatRef }) => {
+  const formattedContent = message.content.split('\n').map((line, index) => (
     <React.Fragment key={index}>
       {line}
       {index !== message.length - 1 && index !== 0 && <br />}{' '}
-      {/* Add <br /> except for the last line */}
     </React.Fragment>
   ))
   return (
@@ -23,25 +23,14 @@ const ChatBubble = ({ message, isUser, chatRef, links = [] }) => {
           !isUser ? 'bg-[#E3D9FF] chatBoxAi' : 'bg-[#E5E5E5] chatBoxUser'
         }  text-black/90 rounded-lg py-2 px-4 max-w-[80%] shadow-sm`}
       >
-        <p className="text-[15px] font-medium overflow-hidden text-ellipsis font-roboto">
+        <p className="text-[16px] font-medium overflow-hidden text-ellipsis font-roboto">
           {formattedContent}
         </p>
-        {/* {links.length ? (
-          <div className="mt-4 flex flex-col gap-2">
-            <p className="text-sm font-medium text-slate-500">Sources:</p>
-            {links?.map((link) => (
-                <a
-                  key={link}
-                  href={link}
-                  className="block w-fit px-2 py-1 text-sm text-violet-700 bg-violet-100 rounded"
-                >
-                  {formatPageName(link)}
-                </a>
-              ))}
-          </div>
-        ) : (
-          ""
-        )} */}
+        <span
+          className={`text-ab-sm float-${message.role === 'owner' ? 'right' : 'left'} text-ab-black`}
+        >
+          {dayjs(message.created_at).format('h:mm a')}
+        </span>
       </div>
     </div>
   )

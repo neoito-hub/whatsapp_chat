@@ -24,7 +24,7 @@ const SideNav = () => {
               key={menu.slug}
               className={`flex gap-2 p-2 whitespace-nowrap cursor-pointer pl-5 ${
                 (menu.url ===
-                  `/${location.pathname.split('/').filter(Boolean)[0]}` ||
+                  `/${location?.pathname?.split('/').filter(Boolean)[0]}` ||
                   (menu.url === '/chat' && location.pathname === '/')) &&
                 'bg-primary/10'
               }`}
