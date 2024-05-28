@@ -20,13 +20,17 @@ const handler = async (event) => {
 
     if (userInfo.error) {
       sendResponse(res, 400, { success: false, msg: userInfo.error })
-      return;
+      return
     }
 
     let actualRecipientIds = []
+    let recipientsHashmap = new Map()
 
     for (const userId of reqBody.recipients) {
-      actualRecipientIds.push(userId)
+      if (!recipientsHashmap.has(userId)) {
+        recipientsHashmap.set(userId, userId)
+        actualRecipientIds.push(userId)
+      }
     }
 
     //template info deatils
