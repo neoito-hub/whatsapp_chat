@@ -10,6 +10,8 @@ WhatsApp Chat is a versatile tool that enables seamless communication with users
 
 2. **Authentication Shield**: Ensures secure access to the chat system by implementing robust authentication mechanisms to protect sensitive user data and system functionalities.
 
+3. **Frontend Application**: The frontend application provides users with a user-friendly interface to interact with your system. It communicates with the backend components, leveraging the authentication mechanism provided by Shield.
+
 ## Prerequisites
 
 Before getting started, ensure the following prerequisites are met:
