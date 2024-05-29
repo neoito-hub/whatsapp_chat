@@ -12,12 +12,12 @@ const handler = async (event) => {
 
     await validateBody(reqBody, 'chatlistSchema')
 
-    // const userInfo = await authenticateUser(req)
+    const userInfo = await authenticateUser(req)
 
-    // if (userInfo.error) {
-    //   sendResponse(res, 400, { success: false, msg: userInfo.error })
-    //   return
-    // }
+    if (userInfo.error) {
+      sendResponse(res, 400, { success: false, msg: userInfo.error })
+      return
+    }
 
     const { page = 1, limit = 10, search = '', project_id } = reqBody
     const skip = (page - 1) * limit
