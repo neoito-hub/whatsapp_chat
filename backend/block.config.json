@@ -1,0 +1,75 @@
+{
+  "name": "whatsApp_chat",
+  "type": "package",
+  "blockId": "1e6RyGd9uBCNgvy1hfqyo",
+  "source": {
+    "https": null,
+    "ssh": null,
+    "branch": "block_whatsApp_chat"
+  },
+  "parentBlockIDs": [],
+  "isPublic": true,
+  "supportedAppblockVersions": [
+    "1.0.0"
+  ],
+  "repoType": "mono",
+  "dependencies": {
+    "add_contact": {
+      "directory": "add_contact"
+    },
+    "shared": {
+      "directory": "shared"
+    },
+    "list_contact": {
+      "directory": "list_contact"
+    },
+    "edit_contact": {
+      "directory": "edit_contact"
+    },
+    "delete_contact": {
+      "directory": "delete_contact"
+    },
+    "create_template": {
+      "directory": "create_template"
+    },
+    "list_template": {
+      "directory": "list_template"
+    },
+    "start_new_chat": {
+      "directory": "start_new_chat"
+    },
+    "broadcast_message": {
+      "directory": "broadcast_message"
+    },
+    "send_message": {
+      "directory": "send_message"
+    },
+    "chat_list": {
+      "directory": "chat_list"
+    },
+    "chat_history": {
+      "directory": "chat_history"
+    },
+    "send_media_message": {
+      "directory": "send_media_message"
+    },
+    "file_upload": {
+      "directory": "file_upload"
+    },
+    "list_category": {
+      "directory": "list_category"
+    },
+    "list_language": {
+      "directory": "list_language"
+    },
+    "list_broadcast": {
+      "directory": "list_broadcast"
+    },
+    "get_template_details_by_id": {
+      "directory": "get_template_details_by_id"
+    },
+    "edit_template": {
+      "directory": "edit_template"
+    }
+  }
+}

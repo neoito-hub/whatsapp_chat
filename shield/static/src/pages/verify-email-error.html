@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Appblocks - Verify your email</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link href="/assets/css/auth-output.css" rel="stylesheet" />
+    <script type="module" src="/js/services/verify-email.js"></script>
+    <script defer src="/js/index.js"></script>
+</head>
+<body>
+    <div class="w-full min-h-screen float-left flex sm:block">
+        <div class="w-full flex flex-col min-h-screen items-center sm:justify-center sm:p-2">
+            <div class="w-full max-w-344 sm:mx-auto bg-white sm:rounded-2xl min-h-full sm:min-h-0 py-8 px-6 authentication-wrapper">
+                <div class="w-full flex flex-col items-center">
+                    <img src="/assets/img/logo.svg" alt="" width="84px" height="108px"></img>
+                    <div class="text-xl font-light mt-3">Verify mail</div>
+                </div>
+                <div class="w-full float-left py-8 px-6 rounded-2xl border-primary border mt-5">
+                        
+                        <div class="error-msg-wrapper error-msg-border error-msg-bg w-full mb-5 border py-4 items-center rounded-md flex justify-between px-3">
+                            <div class="flex">
+                                <img class="mr-2" src="assets/img/icons/icon-error.svg" width="13px" height="13px" alt=""/>
+                                <div id="error-msg" class="text-xs text-gray-dark tracking-tighter">{{ .ErrorMessage }}</div>
+                            </div>
+                            <div onClick="handleClosebtn()" class="flex-shrink-0 cursor-pointer"><img src="assets/img/icons/close-icon.svg" width="8px" height="8px" alt=""></img></div>
+                        </div>
+                        <div class="hidden success-msg-wrapper success-msg-border success-msg-bg w-full mb-5 border py-4 items-center rounded-md flex justify-between px-3">
+                            <div class="flex">
+                                <img class="mr-2" src="/assets/img/icons/green-tick.svg" width="13px" height="13px" alt=""/>
+                                <div id="success-msg" class="text-xs text-gray-dark tracking-tighter"></div>
+                            </div>
+                            <div class="flex-shrink-0 cursor-pointer"><img src="/assets/img/icons/close-icon.svg" width="8px" height="8px" alt=""></img></div>
+                        </div>
+
+                        <form class="frm-container w-full float-left mb-0" id="formVerifyEmail">
+                            <p class="text-sm tracking-tight text-center px-5 text-gray-dark mb-6 leading-normal">Enter the 6-Digit code sent 
+                                to your email <b class="font-semibold" id="userEmail">youremail@mail.com</b></p>
+                            <div class="flex mb-3 items-center">
+                                <input oninput='handleClosebtn();digitValidate(this)' placeholder="000" onkeyup='tabChange(1)' maxlength="3" class="otp-input w-full px-2 h-8 border border-primary rounded-md focus:outline-none bg-white text-base text-center font-semibold text-gray-dark uppercase" type="text"></input>
+                                <div class="px-4 text-xs text-gray-light">-</div>
+                                <input oninput='handleClosebtn();digitValidate(this)' placeholder="000" onkeyup='tabChange(2)'  maxlength="3" class="otp-input w-full px-2 h-8 border border-primary rounded-md focus:outline-none bg-white text-base text-center font-semibold text-gray-dark uppercase" type="text"></input>
+                            </div>
+                            <p id="errorMessage" style="color: red;"></p>
+                            <div class="flex flex-col button-wrapper w-full">
+                                <button onClick="verifyEmail(event)" type="submit" class="rounded-md text-white h-8  mt-2 font-semibold text-sm transition-all bg-primary bg-primary-hover">Verify Email</button>
+                            </div>
+                        </form>
+                </div>
+                <div class="w-full mt-5 float-left text-center font-normal text-sm">Didn’t Receive one? <span id="Timer"  class="text-gray-light">Resend OTP(0:32s)</span></div>
+                <div class="w-full float-left text-center mt-2">
+                    <a href="" id="signupLink" class="w-full text-center text-sm text-purple mt-3 cursor-pointer hover:underline">Change Email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+     const urlParams = new URLSearchParams(window.location.search);
+      const user_email = urlParams.get("user_email");
+
+      if (user_email) {
+        const userEmailElement = document.getElementById("userEmail");
+        userEmailElement.innerText = user_email.toLowerCase();
+      }
+      
+      urlParams.delete('error');
+      urlParams.delete('user_email');
+      urlParams.delete('user_id');
+      
+      const signupLink = document.getElementById("signupLink");
+      signupLink.href = `signup?${urlParams}`;
+    </script>
+</body>
+
+</html>

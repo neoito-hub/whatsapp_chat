@@ -1,0 +1,12 @@
+// {
+//   "name": "user_invite",
+//   "type": "ui-elements",
+//   "source": {
+//     "https": "https://github.com/appblocks-hub/_spaces_user_invite.git",
+//     "ssh": "git@github.com:appblocks-hub/_spaces_user_invite.git"
+//   },
+//   "language": "nodejs",
+//   "start": "npx webpack-dev-server",
+//   "build": "npx webpack",
+//   "postPull": "npm i"
+// }

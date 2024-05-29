@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Appblocks - Signup</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link href="/assets/css/auth-output.css" rel="stylesheet" />
+    <script type="module" defer src="/js/services/signup.js"></script>
+    <script defer src="/js/index.js"></script>
+</head>
+
+<body>
+        <div class="w-full min-h-screen float-left flex sm:block">
+            <div class="w-full flex flex-col min-h-screen items-center sm:justify-center sm:p-2">
+                <div class="w-full max-w-344 sm:mx-auto bg-white sm:rounded-2xl min-h-full sm:min-h-0 py-8 px-6 authentication-wrapper">
+                    <div class="w-full flex flex-col items-center">
+                        <img src="/assets/img/logo.svg" alt="" width="84px" height="108px"></img>
+                       <div class="text-xl font-light mt-3">Sign up for Appblocks</div>
+                    </div>
+                    <div class="w-full float-left py-8 px-6 rounded-2xl border-primary border mt-5">
+                          
+                            <div class="error-msg-wrapper error-msg-border error-msg-bg w-full mb-5 border py-4 items-center rounded-md flex justify-between px-3 hidden">
+                                <div class="flex">
+                                    <img class="mr-2" src="/assets/img/icons/icon-error.svg" width="13px" height="13px" alt=""/>
+                                    <div id="error-msg" class="text-xs text-gray-dark tracking-tighter ">Incorrect Username/Password.</div>
+                                </div>
+                                <div onClick="handleClosebtn()" class="flex-shrink-0 cursor-pointer"><img src="/assets/img/icons/close-icon.svg" width="8px" height="8px" alt=""></img></div>
+                            </div>
+                           
+
+                            <form class="frm-container w-full float-left mb-0" id="signupForm" >
+                                <div class="flex flex-col mb-3">
+                                    <label class="font-semibold text-sm text-gray-dark">Email Address*</label>
+                                    <input id="email" oninput=handleClosebtn() name="email" placeholder="Enter Email Address" class="w-full px-2 h-8 border border-primary rounded-md focus:outline-none bg-white text-sm" type="text"></input>
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <label class="font-semibold text-sm text-gray-dark">Choose a Username*</label>
+                                    <input id="username" oninput=handleClosebtn() name="username" placeholder="Enter Username" class="w-full px-2 h-8 border border-primary rounded-md focus:outline-none bg-white text-sm" type="text"></input>
+                                </div>
+                                <div class="flex flex-col mb-3">
+                                    <label class="font-semibold text-sm text-gray-dark">Create Password*</label>
+                                    <div class="w-full relative">
+                                        <input id="password" oninput=handleClosebtn() name="password" placeholder="Enter Password" class="w-full px-2 pr-8 h-8 border border-primary rounded-md focus:outline-none bg-white text-sm" type="password"></input>
+                                        <div class="visible-icon absolute w-8 h-full top-0 right-0" onclick="typeChanger('password', this)"></div>
+                                    </div>
+                                </div>
+                                <div class="flex my-3 items-center w-full float-left">
+                                    <label class="font-medium checkbox-label flex items-center">
+                                        <input id="acceptTerms" name="acceptTerms" checked="checked" class="hidden" type="checkbox"></input><span class="border border-primary float-left cursor-pointer mr-2"></span>
+                                    </label>
+                                    <div class="font-normal text-sm tracking-tight text-gray-dark accept-text-xs">I accept the <a class="underline" id="myBtn" href="https://www.appblocks.com/pages/terms-conditions-customers/" target="_blank">Terms & Conditions.*</a></div>
+                                </div>
+                                <p id="errorMessage" style="color: red;"></p>
+                                <div class="flex flex-col button-wrapper w-full">
+                                    <button type="submit" class="rounded-md text-white h-8 mt-2 font-semibold text-sm transition-all bg-primary bg-primary-hover">Sign Up</button>
+                                </div>
+                                <div class="flex items-center relative mt-8">
+                                    <hr class="border-primary border-solid w-full" /><span id="or"
+                                        class="text-xs text-gray-light bg-white py-1 px-2 absolute z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">OR</span>
+                                </div>
+                                <div class="flex justify-center items-center space-x-4 mt-5">
+                                    <a href="" id="googleSignup" class="w-8 h-8 flex flex-shrink-0 cursor-pointer justify-center items-center bg-[#FAFBFC] rounded-full transition-border duration-300 border border-solid border-transparent hover:border-[#6F42C1]">
+                                        <img src="./assets/img/icons/google.svg" alt="" />
+                                    </a>
+                                    <a href="" id="linkedinSignup" class="w-8 h-8 flex flex-shrink-0 cursor-pointer justify-center items-center bg-[#FAFBFC] rounded-full transition-border duration-300 border border-solid border-transparent hover:border-[#6F42C1]">
+                                        <img src="./assets/img/icons/linkedin.svg" alt="" />
+                                    </a>
+                                    <a href="" id="twitterSignup" class="w-8 h-8 flex flex-shrink-0 cursor-pointer justify-center items-center bg-[#FAFBFC] rounded-full transition-border duration-300 border border-solid border-transparent hover:border-[#6F42C1]">
+                                        <img src="./assets/img/icons/twitter.svg" alt="" />
+                                    </a>
+                                </div>
+                            </form>
+                    </div>
+                    <div class="w-full mt-5 float-left text-center font-normal text-sm">Already have an account? <a href="" id="loginLink" class="text-purple hover:underline">Sign In</a></div>
+                </div>
+            </div>
+        </div>
+        <!-- <div id="myModal" class="modal">
+
+            Modal content
+            <div class="modal-content">
+              <div style="flex-direction: row;display: flex;justify-content: space-between;">
+                <h1 class="modal-heading">Terms and Conditions</h1>
+                <span class="close">&times;</span>
+              </div>
+              <p class="modal-p">Fusce nisl libero, elementum sed molestie non, vestibulum at nibh. Curabitur ornare sem sed nisl vehicula, in suscipit mi condimentum. Nam vel lacus euismod, porttitor ex ut, imperdiet turpis. Sed tincidunt consectetur sapien. Cras aliquam mi vel orci suscipit, vitae sollicitudin ex mollis. Phasellus dignissim mi nibh, condimentum finibus magna pellentesque et. Nam et scelerisque tortor, non rutrum mi. Nulla placerat dui eget nunc scelerisque sagittis. Nam sit amet ullamcorper metus.
+
+                Maecenas dapibus augue a libero mollis convallis. Duis id ante dui. Sed convallis neque sapien, vitae porttitor augue facilisis ut. Vivamus lobortis sit amet nibh eget lobortis. Cras rutrum a ex non interdum. Praesent id turpis pretium, molestie diam vel, fermentum lectus. Phasellus vel finibus nibh. Nunc ut massa faucibus eros venenatis vehicula eget ullamcorper augue. Etiam vel scelerisque massa. Aenean bibendum luctus risus, id finibus metus. Donec nisl neque, molestie et bibendum quis, congue vitae est. Suspendisse potenti. Praesent aliquam, elit at blandit lobortis, felis odio tempus nunc, non semper ipsum ex in arcu. Quisque pellentesque augue vulputate feugiat hendrerit.
+                
+                Fusce nisl libero, elementum sed molestie non, vestibulum at nibh. Curabitur ornare sem sed nisl vehicula, in suscipit mi condimentum. Nam vel lacus euismod, porttitor ex ut, imperdiet turpis. Sed tincidunt consectetur sapien. Cras aliquam mi vel orci suscipit, vitae sollicitudin ex mollis. Phasellus dignissim mi nibh, condimentum finibus magna pellentesque et. Nam et scelerisque tortor, non rutrum mi. Nulla placerat dui eget nunc scelerisque sagittis. Nam sit amet ullamcorper metus.
+                </p>
+            </div> -->
+          
+          </div>
+          <script>
+            (() => {
+                const urlParams = new URLSearchParams(window.location.search);
+                urlParams.delete('error');
+                const loginLink = document.getElementById("loginLink");
+                loginLink.href = `login?${urlParams}`;
+                const googleSignup = document.getElementById("googleSignup");
+                googleSignup.href = `auth/google/signup?${urlParams}`;
+                const twitterSignup = document.getElementById("twitterSignup");
+                twitterSignup.href = `auth/twitter/signup?${urlParams}`;
+                const linkedinSignup = document.getElementById("linkedinSignup");
+                linkedinSignup.href = `auth/linkedin/signup?${urlParams}`;
+            })();
+          </script>
+</body>
+</html>

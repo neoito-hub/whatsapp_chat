@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Appblocks - Authorize</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link href="/assets/css/auth-output.css" rel="stylesheet" />
+    <script type="module" src="/js/services/authorize-appname-permission.js"></script>
+</head>
+<body>
+    <div class="w-full min-h-screen float-left flex sm:block">
+        <div class="w-full flex flex-col min-h-screen items-center sm:justify-center sm:p-2">
+            <div class="w-full max-w-[300px] sm:mx-auto bg-white sm:rounded-2xl min-h-full sm:min-h-0 py-8 px-6 authentication-wrapper">
+                <div class="w-full flex flex-col items-center">
+                    <div class="w-full flex flex-col items-center">
+                        <img src="/assets/img/logo.svg" alt="" width="84px" height="108px"></img>
+                    </div>
+                    <div class="w-full my-4 float-left text-center">
+                        <div class="text-xl font-semibold mt-3">Authorize AppName</div>
+                        <p class="text-xs tracking-tight text-center text-gray-dark leading-normal text-gray-light">App Name, requires authorization from user.
+                            Click allow to authorize app install.</p>
+                    </div>
+                </div>
+                <form class="frm-container w-full float-left mb-0" id="authAppnamePermission">
+                <div class="w-full float-left mt-2">
+                    <div class="flex flex-col button-wrapper w-full">
+                        <button onClick="submitAppnamePermissionForm()" class="rounded-md text-white h-8 mt-2 font-semibold text-sm transition-all bg-primary bg-primary-hover">Allow</button>
+                        <a href="" class="w-full text-center text-sm text-purple mt-4 cursor-pointer hover:underline">Do not Authorize</a>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
