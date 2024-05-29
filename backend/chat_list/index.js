@@ -38,8 +38,11 @@ const handler = async (event) => {
       FROM chats as c
       WHERE c."projectId" =${project_id}
       AND c."chatName" ILIKE ${searchValue}
+      ORDER BY 
+      c."latestMessageCreatedTime" DESC
       LIMIT ${limit} 
-      OFFSET ${skip};`
+      OFFSET ${skip}
+       ;`
 
     let result = {
       chats: chatsInfo,
