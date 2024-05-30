@@ -68,11 +68,11 @@ services:
       redis:
         condition: service_healthy
     command: bash -c "bb start && npx prisma db push --schema=./shared/prisma/schema.prisma &&  npx prisma db seed --schema=./shared/prisma/schema.prisma && bb log"
-  # frontend-app:
-  #   build:
-  #     context: ./frontend
-  #     # target: dev
-  #     dockerfile: Dockerfile
-  #   container_name: frontend_container
-  #   ports:
-  #     - "3011:80"
+  frontend-app:
+    build:
+      context: ./frontend
+      # target: dev
+      dockerfile: Dockerfile
+    container_name: frontend_container
+    ports:
+      - "3011:80"
